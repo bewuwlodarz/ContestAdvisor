@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DanceCon.Models.ParticipantViewModel>
+@using DanceCon.Context
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "Participants";
+    var context = new EFCContext();
+    var id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    var contestname = context.Contests.Single(x => x.ID == id).Title;
+
+    }
+
+<div class="page-header text-center">
+
+    <h1>Participants of @contestname</h1>
+</div>
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+
+        </div>
+    </div>
+</div>
+<br />
+
+<table class="table table-striped">
+    <tr>
+
+        <td>Name</td>
+        <td>Country</td>
+        <td> City </td>
+        @if (SignInManager.IsSignedIn(User))
+        {<td>Remove or Edit </td> }
+        </tr>
+    <tbody>
+        @foreach (var cons in Model)
+        {
+            <tr class="Search">
+
+                <td>@cons.Name</td>
+                <td>@cons.Country</td>
+                <td>@cons.City</td>
+
+
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+
+                    <td>
+                        @Html.ActionLink("Remove or Edit", "RemovePart", new { id = cons.ID }, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" }) 
+                        
+                    </td>
+                }
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<script src="~/lib/jquery/dist/jquery-3.4.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+
+        });
+    });
+
+
+
+</script>

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<DanceCon.Models.ContestViewModel>
+@using Microsoft.AspNetCore.Identity
+@inject  SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Contestlist";
+}
+<div class="page-header text-center">
+
+        <h1>List of all Contests</h1>
+    </div>
+
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+
+        </div>
+    </div>
+</div>
+<br />
+<div class="row" >
+    <div class="col-lg-12">
+        <div class="bs-component">
+            <table class="table table-hover">
+                <tr class="table-light">
+
+
+                    <th> @Html.ActionLink("Title", "Contestlist", new { sortOrder = ViewBag.TitleSortParm })  </th>
+                    <th>  @Html.ActionLink("Country", "Contestlist", new { sortOrder = ViewBag.CountrySortParm })  </th>
+                    <th>City    </th>
+                    <th>Category </th>
+                    <th>Type(Age) </th>
+                    <th> @Html.ActionLink("Date of Contest", "Contestlist", new { sortOrder = ViewBag.DateSortParm })   </th>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <th>Add Participant</th>
+                    }
+                    <th>Participants</th>
+                    <th>Info</th>
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <th>Edit/Remove</th>
+                    }
+
+                    </tr>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr class="Search">
+
+
+                        <td>@item.Title     </td>
+                        <td>@item.Country   </td>
+                        <td>@item.City</td>
+                        <td>@item.CategoryText</td>
+                        <td>@item.TypeText</td>
+                        <td>@Html.DisplayFor(modelItem => item.ContestDate, "{0:dd/MM/yyyy}")</td>
+                        @if (SignInManager.IsSignedIn(User) )
+                        {
+                            <td>
+                                @Html.ActionLink("+Participant", "AddPart", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary", @role = "button" })
+                            </td>
+                        }
+
+
+                        <td>
+                            @Html.ActionLink("List", "Participants", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-secondary", @role = "button" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Detail", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-info", @role = "button" })
+                        </td>
+                  
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                            <td>
+                                @Html.ActionLink("Edit/Remove", "RemoveContest", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-warning", @role = "button" })
+                                </td>
+                                }
+                           
+                        </tr>
+
+                     }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery-3.4.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+
+        });
+    });
+       
+       
+
+</script>
+

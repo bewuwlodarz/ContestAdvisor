@@ -1,0 +1,47 @@
+﻿@model DanceCon.Models.ParticipantViewModel
+@{
+    ViewData["Title"] = "AddPart";
+}
+<div class="page-header text-center">
+
+    <h1>REGISTER</h1>
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+
+<body>
+    <form method="post" asp-action="EditPart">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"></input><br />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country"></label>
+            <input asp-for="Country" class="form-control"></input><br />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input asp-for="City" class="form-control"></input><br />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BirthDate"></label>
+            <input asp-for="BirthDate" class="form-control"></input><br />
+            <span asp-validation-for="BirthDate" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-success" type="submit">Wyślij</button>
+
+    </form>
+</body>
+</html>

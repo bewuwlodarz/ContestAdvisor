@@ -1,0 +1,65 @@
+﻿@model DanceCon.Models.DetailViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "Add";
+    var photoPath = "~/images/" + (Model.Contests.PhotoPath ?? "noimages.png");
+}
+
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+    .blurOut img:hover {
+        webkit-filter: blur(4px); /* Chrome, Safari, Opera */
+        filter: blur(4px);
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+<div class="card border-primary m-3 text-center">
+    <h3 class="card-header">@Model.Contests.Title</h3>
+    <h5 class="card-header" type="date">@Html.DisplayFor(m => m.Contests.ContestDate, "{0:dd/MM/yyyy}")</h5>
+    <div class="blurOut">
+        <img class="center" style="max-height: 500px;  min-width:100px;  margin: auto;object-fit: scale-down;" src="@photoPath" asp-append-version="true">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Country: @Model.Contests.Country City: @Model.Contests.City</h5>
+
+    </div>
+
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Age Type: @Model.Contests.TypeText</li>
+        <li class="list-group-item">Category: @Model.Contests.CategoryText</li>
+        <li class="list-group-item">
+            Judges: |@foreach (var Judge in Model.Judges)
+            {<td> @Judge._JudgeName |</td>}
+        </li>
+    </ul>
+    <div class="card-body">
+        <p class="card-text">@Model.Contests.Description</p>
+    </div>
+    <div class="card-body">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <td>
+                @Html.ActionLink("+Participant", "AddPart", new { id = Model.Contests.ID }, htmlAttributes: new { @class = "btn btn-primary", @role = "button" })
+            </td>
+
+        }
+        <td>
+            @Html.ActionLink("List", "Participants", new { id = Model.Contests.ID }, htmlAttributes: new { @class = "btn btn-secondary", @role = "button" })
+        </td>
+      
+    </div>
+    <div class="card-footer text-muted" type="date" placeholder="YYYY-MM-DD">
+        @Model.Contests.AddedDate
+    </div>
+</div>
+
+</html>

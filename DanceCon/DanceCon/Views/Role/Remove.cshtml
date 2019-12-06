@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+@{
+    ViewBag.Title = "All Role";
+}
+
+<h2>Remove</h2>
+
+@foreach (var role in Model)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Role Id : @role.Id
+        </div>
+        <div>
+            <h5 class="card-title">@role.Name</h5>
+        </div>
+        <div class="card-footer">
+
+            <a href="#" class="btn btin-primary"> Edit</a>
+            <a href="#" class="btn btin-danger"> Delete</a>
+
+        </div>
+
+
+    </div>
+
+
+
+}

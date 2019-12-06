@@ -1,0 +1,69 @@
+﻿@model DanceCon.Models.ContestViewModel
+@using DanceCon.Context
+@{
+    ViewData["Title"] = "Add";
+    var context = new EFCContext();
+
+    var contestid = ViewBag.contestid;
+    var id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    var contestname = context.Contests.Single(x => x.ID == id).Title;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+
+        <h1 class="display-3 text-center">Edit @contestname</h1>
+        <p class="lead text-center">Edit your contest.</p>
+    </div>
+    <form method="post" enctype="multipart/form-data" asp-action="EditContest">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control"></input><br />
+        <span asp-validation-for="Title" class="text-danger"></span>
+        <label asp-for="Country"></label>
+        <input asp-for="Country" class="form-control"></input><br />
+        <span asp-validation-for="Country" class="text-danger"></span>
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control"></input><br />
+        <span asp-validation-for="City" class="text-danger"></span>
+        <label asp-for="Categories"></label>
+        <a class="form-control">  @Html.DropDownListFor(x => x.Categories, DanceCon.Models.ContestViewModel.Category) </a><br />
+        <span asp-validation-for="Categories" class="text-danger"></span>
+        <label asp-for="Type"></label>
+        <a class="form-control">  @Html.DropDownListFor(x => x.Type, DanceCon.Models.ContestViewModel.Types) </a><br />
+        <span asp-validation-for="Type" class="text-danger"></span>
+        <label asp-for="ContestDate"></label>
+        <input asp-for="ContestDate" type="date" class="form-control"></input><br />
+        <span asp-validation-for="ContestDate" class="text-danger"></span>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea><br />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+
+        <button type="submit" class="btn btn-warning">Edit</button>
+        
+        @Html.ActionLink("Cancle", "RemoveContest", new { id = @Model.ID }, htmlAttributes: new { @class = "btn btn-secondary", @role = "button" })
+
+
+    </form>
+
+
+
+    @if (ViewData["Success"] != null)
+    {
+        <p>Dodano contest!</p>
+    }
+
+
+</body>
+</html>

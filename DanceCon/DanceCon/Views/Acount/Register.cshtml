@@ -1,0 +1,81 @@
+﻿@model DanceCon.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!Doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+
+<div class="page-header text-center">
+
+    <h3>Your registration to Contest Advisor</h3>
+</div>
+<body>
+
+    <form method=" post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+    <table border="0" cellpadding="0" cellspacing="0">
+        @using (Html.BeginForm("Register", "Acount", FormMethod.Post))
+        {
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="Login" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Login, htmlAttributes: new { @class = "form-control", @type = "text", @placeholder = "example: user1" })
+                        @Html.ValidationMessageFor(m => m.Login, null, new { @class = "text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-6">
+                        @Html.PasswordFor(m => m.Email, htmlAttributes: new { @class = "form-control", @type = "email", @placeholder = "example: email" })
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-6">
+                        @Html.PasswordFor(m => m.Password, htmlAttributes: new { @class = "form-control", @type = "password", @placeholder = "example: Password12!" })
+                        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text text-danger" })
+                    </div>
+                    <small id="TitleHelp" class="form-text text-muted">Remember to have one Uppercase, one number and one special character</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Repeat Password</label>
+                    <div class="col-sm-6">
+                        @Html.PasswordFor(m => m.RepeatPassword, htmlAttributes: new { @class = "form-control", @type = "password", @placeholder = "example: password" })
+                        @Html.ValidationMessageFor(m => m.RepeatPassword, null, new { @class = "text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Country, htmlAttributes: new { @class = "form-control", @type = "text", @placeholder = "example: Poland" })
+                        @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.City, htmlAttributes: new { @class = "form-control", @type = "text", @placeholder = "example: Warsaw" })
+                        @Html.ValidationMessageFor(m => m.City, null, new { @class = "text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Register" class="btn btn-outline-success btn-lg" />
+
+                    </div>
+                </div>
+            </form>
+
+        }
+
+</body>
+</html>

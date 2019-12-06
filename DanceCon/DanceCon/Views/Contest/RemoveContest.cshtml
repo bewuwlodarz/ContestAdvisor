@@ -1,0 +1,54 @@
+﻿@model DanceCon.Models.ContestViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "RemoveorEdit";
+    var photoPath = "~/images/" + (Model.PhotoPath ?? "noimages.png");
+    var contestid = ViewBag.contestid;
+}
+<form method="post" enctype="multipart/form-data" asp-action="RemoveContest">
+    <div class="card border-primary m-3 text-center">
+        <h3 class="card-header">@Model.Title</h3>
+        <h5 class="card-header" type="date">@Html.DisplayFor(m => m.ContestDate, "{0:dd/MM/yyyy}")</h5>
+        <div class="blurOut">
+            <img class="center" style="max-height: 500px;  min-width:100px;  margin: auto;object-fit: scale-down;" src="@photoPath" asp-append-version="true">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Country: @Model.Country City: @Model.City</h5>
+
+        </div>
+
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age Type: @Model.TypeText</li>
+            <li class="list-group-item">Category: @Model.CategoryText</li>
+
+        </ul>
+        <div class="card-body">
+            <p class="card-text">@Model.Description</p>
+        </div>
+
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <button class="btn btn-danger">Remove</button>
+        }
+
+</form>
+@if (SignInManager.IsSignedIn(User) )
+{
+
+    @Html.ActionLink("Edit", "EditContest", new { id = @Model.ID }, htmlAttributes: new { @class = "btn btn-primary", @role = "button" })
+
+}
+     </div>
+<div class="card-footer text-muted" type="date" placeholder="YYYY-MM-DD">
+    @Model.AddedDate
+</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+

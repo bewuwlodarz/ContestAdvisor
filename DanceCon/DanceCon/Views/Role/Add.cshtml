@@ -1,0 +1,32 @@
+﻿@model DanceCon.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Add</h2>
+
+<body>
+    <form method=" post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+    
+        <form asp-action="Add" method="post" asp-route-id="roleName">
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Add New Role</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="roleName" type="text" class="form-control input-md" required="" />
+                </div>
+            </div>
+           
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                    <div class="col-md-4">
+                        <button>Add New Role</button>
+                    </div>
+            
+        </form>
+</body>

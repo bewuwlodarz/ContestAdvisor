@@ -1,0 +1,109 @@
+﻿@model DanceCon.Models.ContestModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Add</h2>
+
+
+<!DOCTYPE html>
+<html>
+
+
+<body>
+    <form method="post" enctype="multipart/form-data" asp-action="Add">
+
+        <div class="jumbotron">
+
+            <h1 class="display-3 text-center">Add Your Contest</h1>
+            <p class="lead text-center">This is time to add your event, remember that you have to complete everything, then you are able to add judges.</p>
+        </div>
+
+   
+
+        <form method="get" asp-action="AddJudge">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control"></input><br />
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <small id="TitleHelp" class="form-text text-muted">Remember you are able to add only one Contest with specific Title</small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" class="form-control"></input><br />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control"></textarea><br />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categories"></label>
+
+                <a>  @Html.DropDownListFor(x => x.Categories, DanceCon.Models.ContestViewModel.Category) </a><br />
+                <span asp-validation-for="Categories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type"></label>
+                <a>  @Html.DropDownListFor(x => x.Type, DanceCon.Models.ContestViewModel.Types) </a><br />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="ContestDate"></label>
+                <input asp-for="ContestDate" min="DateTime.Now" type="date" class="form-control"></input><br />
+                <span asp-validation-for="ContestDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea><br />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input" />
+                <label class="custom-file-label form-text text-muted"> Choose FIle...</label>
+            </div>
+
+
+
+            <button type="submit" class="btn-success">Dodaj wydarzenie</button>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+            </div>
+
+            @section Scripts{
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        })
+
+
+                    })
+
+
+                </script>
+
+            }
+            </div>
+        </form>
+     
+
+    </form>
+    @if (ViewData["Success"] != null)
+    {
+        <p>Dodano contest!</p>
+    }
+
+
+</body>
+</html>
