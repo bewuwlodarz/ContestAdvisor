@@ -16,11 +16,11 @@ As admin of this platform you are able to control every event, every participant
 ## Technologies
 Project is created with:
 
-*Entity Framework Core 2
-*ASP NET CORE.MVC 5
-*MSSQL
-*BOOTSTRAP 4
-*JQUERY
+* Entity Framework Core 2
+* ASP NET CORE.MVC 5
+* MSSQL
+* BOOTSTRAP 4
+* JQUERY
 
 ##Page
-![Page of platform](ContestAdvisor/sitescreenshot.png)
+![Page of platform](./sitescreenshot.jpg)
