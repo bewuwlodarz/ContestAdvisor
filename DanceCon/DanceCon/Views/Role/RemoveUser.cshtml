@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IdentityUser
+
+@{
+    ViewBag.Title = "List of Users";
+}
+<div class="page-header text-center">
+
+    <h1>List of Users</h1>
+</div>
+
+<form method="post" >
+    <div class="card mb-3">
+        <div class="card-header">
+            User Id: @Model.Id
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.UserName</h5>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer">
+                <input type="submit" value="Remove" class="btn btn-primary" />
+            </div>
+        </div>
+        </div>
+</form>

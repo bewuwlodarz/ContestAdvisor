@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DanceCon.Context;
 using DanceCon.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -64,6 +65,18 @@ namespace DanceCon.Controllers
             await RoleManager.CreateAsync(ir);
             return RedirectToAction("Index", "Role");
         }
+        [HttpGet]
+        public async Task<IActionResult> ListUser()
+        {
+
+            var users = UserManager.Users;
+            return View(users);
+
+        }
+
+
+
+        
         [HttpGet]
         public async Task<IActionResult> EditRole(string id)
         {
@@ -186,6 +199,37 @@ namespace DanceCon.Controllers
 
             }
             return RedirectToAction("EditRole", new { Id = roleId });
+        }
+        [HttpGet]
+        public async Task<IActionResult> RemoveUser(string RoleID, [FromServices] EFCContext context)
+        {
+            var _user = UserManager.Users.Single(x => x.Id == RoleID);
+            return View(_user);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveUser(IdentityUser _user, [FromServices] EFCContext context)
+        {
+            context.Users.Remove(_user);
+
+           // await UserManager.DeleteAsync(_user);
+
+           
+
+            var user = await UserManager.FindByIdAsync(_user.Id);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                    return RedirectToAction("ListUser", "Role");
+                else
+                    foreach (IdentityError error in result.Errors)
+                        ModelState.AddModelError("", error.Description);
+            }
+            else
+                ModelState.AddModelError("", "User Not Found");
+            return View("ListUser", UserManager.Users);
         }
     }
 }

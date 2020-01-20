@@ -67,7 +67,7 @@ using DanceCon.Models;
             WriteLiteral("\r\n\r\n\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(81, 678, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "653f5b5c2dad469d85d09229c1b127c0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f362ddb15cb94e42aec98b3b66fa6d6a", async() => {
                 BeginContext(87, 665, true);
                 WriteLiteral(@"
     <meta name=""viewport"" content=""width=devicewidth"" />
@@ -103,7 +103,7 @@ using DanceCon.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(763, 999, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "778f10f77e064d33be99e57feccaeac2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01d70f3124354e0d9efeb70005d2ee96", async() => {
                 BeginContext(769, 31, true);
                 WriteLiteral("\r\n    <div class=\"jumbotron\">\r\n");
                 EndContext();
@@ -129,7 +129,7 @@ using DanceCon.Models;
                 WriteLiteral("</h1>\r\n        <p class=\"lead text-center\">This is time to add your judges, remember that you have to complete everything, then you see your event.</p>\r\n    </div>\r\n\r\n    <div>\r\n        ");
                 EndContext();
                 BeginContext(1141, 392, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "16986496eece4200b91d07d377dd1c0d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b5bf6626ba14d44b0b643ef2f1c0fee", async() => {
                     BeginContext(1179, 347, true);
                     WriteLiteral(@"
          

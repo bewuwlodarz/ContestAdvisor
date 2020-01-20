@@ -253,7 +253,7 @@ namespace DanceCon.Controllers
 
 
                 ViewData["Massage"] = contestModel;
-                UserManager.AddToRoleAsync(context.Users.Single(x=>x.Id==uniqueFileName), "contestAdmin");
+                
                 return View("AddJudge");
             }
             return View();
@@ -314,6 +314,7 @@ namespace DanceCon.Controllers
         [HttpGet]
         public IActionResult AddPart(int id, [FromServices] EFCContext context)
         {
+            ViewData["Massage"]= context.Contests.Single(x => x.ID == id);
             return View();
         }
 

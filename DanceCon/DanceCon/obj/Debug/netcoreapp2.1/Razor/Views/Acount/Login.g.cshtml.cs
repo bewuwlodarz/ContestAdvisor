@@ -66,7 +66,7 @@ using DanceCon.Models;
             WriteLiteral("\r\n<div class=\"page-header text-center\">\r\n\r\n    <h3>Login</h3>\r\n</div>\r\n\r\n<!Doctype html>\r\n<html>\r\n\r\n");
             EndContext();
             BeginContext(180, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c342c26ff2ab4173b4df52f5015f45c9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2265b621a9b04d6187f634b6cd01b46c", async() => {
                 BeginContext(186, 87, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>login</title>\r\n");
                 EndContext();
@@ -86,17 +86,17 @@ using DanceCon.Models;
             WriteLiteral("\r\n\r\n\r\n");
             EndContext();
             BeginContext(286, 1396, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b437f55ce46446fa767cf706b398338", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99430920de9a47e9bc97fb1f125b1e1c", async() => {
                 BeginContext(292, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(298, 104, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af5af98dd50944c69b34afde0466f678", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b81833860814518909a94af01ba8b8e", async() => {
                     BeginContext(319, 10, true);
                     WriteLiteral("\r\n        ");
                     EndContext();
                     BeginContext(329, 60, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e5caceaaa804cdd93546b9f1270eee2", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a67a4cc527e648d8b8de224b28314ec1", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -148,7 +148,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
                 WriteLiteral("        ");
                 EndContext();
                 BeginContext(486, 1178, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bc34312f24042a2a9ddd26d0d85692f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a2b359d4c0e423ea285c9eb1cf47abc", async() => {
                     BeginContext(516, 185, true);
                     WriteLiteral("\r\n            <div class=\"form-group\">\r\n                <label for=\"Login\" class=\"col-sm-2 control-label\">Username</label>\r\n                <div class=\"col-sm-10\">\r\n                    ");
                     EndContext();
